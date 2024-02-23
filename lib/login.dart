@@ -27,9 +27,12 @@ class _LoginState extends State<Login> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _buildRowWithRectangles(screenHeight, cons.fondo2, cons.fondo, cons.fondo3),
-              _buildRowWithRectangles(screenHeight, cons.fondo3, cons.fondo2, cons.fondo),
-              _buildRowWithRectangles(screenHeight, cons.fondo, cons.fondo3, cons.fondo2),
+              _buildRowWithRectangles(
+                  screenHeight, cons.fondo2, cons.fondo, cons.fondo3),
+              _buildRowWithRectangles(
+                  screenHeight, cons.fondo3, cons.fondo2, cons.fondo),
+              _buildRowWithRectangles(
+                  screenHeight, cons.fondo, cons.fondo3, cons.fondo2),
             ],
           ),
           Center(
@@ -99,9 +102,11 @@ class _LoginState extends State<Login> {
                         if (user.text.isEmpty || pass.text.isEmpty) {
                           // Vérifie si l'un des champs est vide
                           campo = true;
-                        } else if (user.text == 'admin' && pass.text == '123456') {
+                        } else if (user.text == 'admin' &&
+                            pass.text == '123456') {
                           // Si les identifiants et les mots de passe correspondent, naviguer vers une autre page
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const Home()));
                         } else {
                           // Si les identifiants et les mots de passe ne correspondent pas, définir une variable "bandera" sur true
                           bandera = true;
@@ -110,28 +115,32 @@ class _LoginState extends State<Login> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: cons.botones,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       fixedSize: Size(size.width * 0.6, 40),
                     ),
                     child: Text(
                       'Iniciar Sesión',
-                      style: TextStyle(color: Colors.white, fontSize: 16,),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 15),
                   bandera
                       ? const Text(
-                    'Usuario o contraseña incorrectos',
-                    style: TextStyle(color: cons.efectos),
-                    textAlign: TextAlign.center,
-                  )
+                          'Usuario o contraseña incorrectos',
+                          style: TextStyle(color: cons.efectos),
+                          textAlign: TextAlign.center,
+                        )
                       : const SizedBox(),
                   campo
                       ? const Text(
-                    'Por favor, rellene todos los campos',
-                    style: TextStyle(color: cons.efectos),
-                    textAlign: TextAlign.center,
-                  )
+                          'Por favor, rellene todos los campos',
+                          style: TextStyle(color: cons.efectos),
+                          textAlign: TextAlign.center,
+                        )
                       : const SizedBox(),
                   SizedBox(height: 10),
                   Text(
@@ -151,7 +160,8 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget _buildRowWithRectangles(double screenHeight, Color color1, Color color2, Color color3) {
+  Widget _buildRowWithRectangles(
+      double screenHeight, Color color1, Color color2, Color color3) {
     final rectangleHeight = screenHeight / 3;
 
     return Container(
