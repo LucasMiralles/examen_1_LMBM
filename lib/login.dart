@@ -35,7 +35,6 @@ class _LoginState extends State<Login> {
           Center(
             child: Container(
               width: size.width * 0.8,
-          /*    height: screenHeight * 0.5,*/
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.7),
@@ -45,7 +44,7 @@ class _LoginState extends State<Login> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10), // Ajoute du padding vertical
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
                       'Bienvenido a tu primer EXAMEN',
                       style: TextStyle(
@@ -60,8 +59,8 @@ class _LoginState extends State<Login> {
                     controller: user,
                     decoration: InputDecoration(
                       hintText: 'Correo/Usuario',
-                      filled: true, // Ajoute un fond rempli blanc
-                      fillColor: Colors.white, // Couleur de fond blanc
+                      filled: true,
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide(color: Colors.grey),
@@ -78,8 +77,8 @@ class _LoginState extends State<Login> {
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Contraseña',
-                      filled: true, // Ajoute un fond rempli blanc
-                      fillColor: Colors.white, // Couleur de fond blanc
+                      filled: true,
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide(color: Colors.grey),
@@ -94,8 +93,8 @@ class _LoginState extends State<Login> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        campo = false; // Réinitialise la variable campo à false
-                        bandera = false; // Réinitialise la variable bandera à false
+                        campo = false;
+                        bandera = false;
 
                         if (user.text.isEmpty || pass.text.isEmpty) {
                           // Vérifie si l'un des champs est vide
