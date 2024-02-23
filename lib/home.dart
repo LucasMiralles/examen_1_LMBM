@@ -29,6 +29,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // Liste des items
   List<Item> itemList = [
+    Item(day: 1, activity: 'Iniciar el examen, para poder ir a dormir tranquilo', comment: 'Subir el examen antes de las 9 am del viernes', rating: 3, isEven: false),
+    Item(day: 2, activity: 'Terminar y enviar mi examen para no reprobar', comment: 'No quiero reprobar !', rating: 4, isEven: true),
     Item(day: 3, activity: 'Preparar una presentación para el trabajo final', comment: '¡La presentación debe ser impresionante!', rating: 5, isEven: false),
     Item(day: 4, activity: 'Comprar ingredientes para cocinar una cena especial', comment: '¡Voy a sorprender a mi pareja!', rating: 4, isEven: true),
     Item(day: 5, activity: 'Hacer ejercicio en el gimnasio', comment: '¡Necesito mantenerme en forma!', rating: 3, isEven: false),
@@ -45,11 +47,13 @@ class _HomeState extends State<Home> {
     Item(day: 16, activity: 'Planificar las próximas vacaciones', comment: '¡El mundo está lleno de lugares por descubrir!', rating: 5, isEven: true),
   ];
 
+  bool isCachedPressed = false;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: cons.fondo,
+      backgroundColor: isCachedPressed ? cons.green : cons.fondo,
       body: Stack(
         children: [
           Positioned(
@@ -78,7 +82,7 @@ class _HomeState extends State<Home> {
                     style: GoogleFonts.getFont(
                       'Montserrat',
                       textStyle: TextStyle(
-                        color: cons.titulos,
+                        color: isCachedPressed ? cons.gold : cons.titulos,
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
@@ -96,10 +100,13 @@ class _HomeState extends State<Home> {
               height: 20,
               child: FloatingActionButton(
                 onPressed: () {
-                  // Action à effectuer lorsque le bouton est pressé
+                  setState(() {
+                    // Inverser l'état du bouton lorsque le bouton est pressé
+                    isCachedPressed = !isCachedPressed;
+                  });
                 },
                 backgroundColor: Colors.white,
-                child: Icon(Icons.cached, color: cons.titulos, size: 15),
+                child: Icon(Icons.cached, color: isCachedPressed ? cons.green : cons.fondo, size: 15),
               ),
             ),
           ),
@@ -142,7 +149,7 @@ class _HomeState extends State<Home> {
                                         color: cons.fondo2,
                                       ),
                                     ),
-                                    Icon(Icons.phone_iphone, color: cons.fondo2, size: 30), // Mettre l'icône du téléphone ici
+                                    Icon(Icons.phone_iphone, color: isCachedPressed ? cons.gold : cons.fondo2, size: 30), // Mettre l'icône du téléphone ici
                                   ],
                                 ),
                                 SizedBox(height: 5),
@@ -193,14 +200,14 @@ class _HomeState extends State<Home> {
                                 onPressed: () {}, // Action pour modifier
                                 icon: Icon(Icons.edit, color: Colors.white, size: 20), // Icône de stylo
                                 label: Text('Editar', style: TextStyle(color: Colors.white)),
-                                style: ElevatedButton.styleFrom(primary: cons.botones),
+                                style: ElevatedButton.styleFrom(primary: isCachedPressed ? cons.gold : cons.botones),
                               ),
                               SizedBox(height: 15), // Espacement entre les boutons
                               ElevatedButton.icon(
                                 onPressed: () {}, // Action pour supprimer
                                 icon: Icon(Icons.delete, color: Colors.white, size: 20), // Icône de poubelle
                                 label: Text('Borrar', style: TextStyle(color: Colors.white)),
-                                style: ElevatedButton.styleFrom(primary: cons.botones),
+                                style: ElevatedButton.styleFrom(primary: isCachedPressed ? cons.gold : cons.botones),
                               ),
                               SizedBox(height: 12), // Espacement entre le dernier bouton et le bas du conteneur
                             ],
@@ -234,7 +241,7 @@ class _HomeState extends State<Home> {
                                       color: cons.fondo2,
                                     ),
                                   ),
-                                  Icon(Icons.phone_iphone, color: cons.fondo2, size: 30), // Ne pas mettre child: ici
+                                  Icon(Icons.phone_iphone, color: isCachedPressed ? cons.gold : cons.fondo2, size: 30), // Ne pas mettre child: ici
                                 ],
                               ),
                               SizedBox(height: 5),
@@ -281,12 +288,12 @@ class _HomeState extends State<Home> {
             right: 0,
             child: Container(
               height: 50, // Hauteur de votre pied de page
-              color: cons.fondo,
+              color: isCachedPressed ? cons.green : cons.fondo,
               child: Center(
                 child: Text(
                   'SEGUNDA VISTA : Lucas Miralles',
                   style: TextStyle(
-                    color: cons.titulos,
+                    color: isCachedPressed ? cons.gold : cons.titulos,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
